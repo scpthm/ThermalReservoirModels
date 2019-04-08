@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cat sttst07.log | gawk '{print $4}'| grep  "[0-9]" >time
+cat sttst07.log | gawk '{print $6}'| grep  "[0-9]" >por
+cat sttst07.log | gawk '{print $7}'| grep  "[0-9]" >pwr
+cat sttst07.log | gawk '{print $9}'| grep  "[0-9]" >ir
+
+paste time ir >cmg-ir
+paste time por >cmg-por
+paste time pwr >cmg-pwr
+
+cp -f cmg-* ../
+
+rm ir por pwr time -f

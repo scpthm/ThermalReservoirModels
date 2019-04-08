@@ -1,0 +1,57 @@
+#!/bin/bash
+
+cat $1 | grep time| grep step | grep days | gawk '{print $2}' >time
+cat $1 | grep "total water inj"| gawk '{print $6}'| sed 's/^-//g' >ir
+cat $1 | grep "total oil"| gawk '{print $6}' | sed 's/^-//g' >por
+cat $1 | grep "total water pro"| gawk '{print $6}'| sed 's/^-//g' >pwr
+cat $1 | grep "total gas"| gawk '{print $6}' | sed 's/^-//g' >pgr
+
+cat $1 | grep "well: inj, 1" | grep bhp | gawk '{print $16}' >bhp
+cat $1 | grep "well: p1, 2" | grep "water"| gawk '{print $16}'>bhp-p1
+cat $1 | grep "well: p2, 3" | grep "water"| gawk '{print $16}'>bhp-p2
+cat $1 | grep "well: p3, 4" | grep "water"| gawk '{print $16}'>bhp-p3
+cat $1 | grep "well: p4, 5" | grep "water"| gawk '{print $16}'>bhp-p4
+
+cat $1 | grep "well: p1, 2" | grep oil | gawk '{print $7}' >oil-p1
+cat $1 | grep "well: p2, 3" | grep oil | gawk '{print $7}' >oil-p2
+cat $1 | grep "well: p3, 4" | grep oil | gawk '{print $7}' >oil-p3
+cat $1 | grep "well: p4, 5" | grep oil | gawk '{print $7}' >oil-p4
+
+cat $1 | grep "well: p1, 2" | grep water | gawk '{print $7}' >wat-p1
+cat $1 | grep "well: p2, 3" | grep water | gawk '{print $7}' >wat-p2
+cat $1 | grep "well: p3, 4" | grep water | gawk '{print $7}' >wat-p3
+cat $1 | grep "well: p4, 5" | grep water | gawk '{print $7}' >wat-p4
+
+cat $1 | grep "well: p1, 2" | grep gas | gawk '{print $7}' >gas-p1
+cat $1 | grep "well: p2, 3" | grep gas | gawk '{print $7}' >gas-p2
+cat $1 | grep "well: p3, 4" | grep gas | gawk '{print $7}' >gas-p3
+cat $1 | grep "well: p4, 5" | grep gas | gawk '{print $7}' >gas-p4
+
+paste time ir >thm-ir
+paste time por >thm-por
+paste time pwr >thm-pwr
+paste time pgr >thm-pgr
+
+paste time bhp >thm-bhp
+paste time bhp-p1 >thm-bhp-p1
+paste time bhp-p2 >thm-bhp-p2
+paste time bhp-p3 >thm-bhp-p3
+paste time bhp-p4 >thm-bhp-p4
+
+paste time oil-p1 >thm-p1-oil
+paste time oil-p2 >thm-p2-oil
+paste time oil-p3 >thm-p3-oil
+paste time oil-p4 >thm-p4-oil
+
+paste time wat-p1 >thm-p1-wat
+paste time wat-p2 >thm-p2-wat
+paste time wat-p3 >thm-p3-wat
+paste time wat-p4 >thm-p4-wat
+
+paste time gas-p1 >thm-p1-gas
+paste time gas-p2 >thm-p2-gas
+paste time gas-p3 >thm-p3-gas
+paste time gas-p4 >thm-p4-gas
+
+rm -f time ir por pwr bhp bhp-p1  bhp-p2 oil-p1 oil-p2 wat-p1 wat-p2 wat-p3 wat-p4 oil-p3 oil-p4 \
+    gas-p* pgr bhp-p3 bhp-p4

@@ -1,0 +1,246 @@
+**  ==============  INPUT/OUTPUT CONTROL  ======================
+
+RESULTS SIMULATOR STARS
+
+*interrupt *stop
+
+*title1 'STARS Test Bed No. 7'
+*title2 'Fourth SPE Comparative Solution Project'
+*title3 'Problem 2A:  Steam Flood with Dead Oil'
+
+*inunit *field   ** output same as input
+
+*outprn *grid pres sw so sg temp y x w solconc viso
+*outprn *well *all
+*wrst 300
+*wprn *grid 300
+*wprn *iter 300
+
+outsrf well  layer all
+outsrf grid  pres so sg temp velocsc fluxsc velocrc fluxrc
+outsrf special matbal well 'OIL'    ** Cumulative oil produced
+
+wprn sector 1
+wsrf sector 1
+
+
+
+**  ==============  GRID AND RESERVOIR DEFINITION  =================
+
+
+*grid *cart 9 9 4
+*kdir *down
+
+**  The triangular area of 1/8 of nine-spot pattern is covered with a
+**  9x5 grid with grid lines diagonal to the line linking the injector
+**  with the nearest producer.  These blocks are trimmed using block
+**  modifiers.
+**  In addition, a point-distributed grid is required in order to put
+**  grid nodes on the injector-producer line.  To do this, an oversized
+**  grid is specified, and then trimmed back using block modifiers.
+
+**  The interwell distance is divided into 8 equal segments, requiring
+**  ni = 9.  The third corner is a 1/4 block, and is located at j = 5.
+
+**  The nine-spot pattern is 2.5 acres in area, or 330 ft square.  The
+**  distance between injector and far producer is (330/2)*1.414 =
+**  233.3 ft, giving a block size of 233.3/8 = 29.17 ft.
+
+*di *con 29.17
+*dj *con 29.17
+*dk *con 10
+*depth 1 1 1 1005
+
+*por *con 0.3
+*permi *con 313
+*permj *con 424
+*permk *con 535
+
+*end-grid
+
+*cpor 5e-4
+*prpor 75
+
+*rockcp 35
+*thconr 24
+*thconw 24
+*thcono 24
+*thcong 24
+
+*hlossprop  overbur 35 24  underbur 35 24
+
+**  ==============  FLUID DEFINITIONS  ======================
+
+
+*model 3 3 3
+
+*compname   'WATER'    'OIL'    'LIGHT'
+*cmm        18.02      600     250
+*pcrit      3206.2      0      225  
+*tcrit      705.4       0      800  
+*avg        1.13e-5     0      5.e-5 
+*bvg        1.075       0      0.9 
+*avisc      0.0047352   2      0.287352
+*bvisc      2728.2      5728.2 3728.2
+
+*molden     3.464      0.10113 0.2092
+*cp         3.999e-6   5.e-6   5.e-6
+*ct1        4e-4       3.8e-4  3.8e-4
+
+*cpg1       7.613      300     247.5
+*cpg2       8.616e-4   0       0
+*ev         0.38       0       0.38
+*hvr        1657.0     0       657.0
+
+*kv1        1.7202e6   0       7.9114e4
+*kv2        0          0       0
+*kv3        0          0       0
+*kv4        -6869.59   0       -1583.71
+*kv5        -376.64    0       -446.78
+
+*prsr 14.7
+*temr 60
+*psurf 14.7
+*tsurf 60
+
+
+
+**  ==============  ROCK-FLUID PROPERTIES  ======================
+
+
+*rockfluid
+
+*swt   **  Water-oil relative permeabilities
+
+**   Sw        Krw        Krow
+**  ----     --------    -------
+    0.45     0.0         0.4
+    0.47     0.000056    0.361
+    0.50     0.000552    0.30625
+    0.55     0.00312     0.225
+    0.60     0.00861     0.15625
+    0.65     0.01768     0.1
+    0.70     0.03088     0.05625
+    0.75     0.04871     0.025
+    0.77     0.05724     0.016
+    0.80     0.07162     0.00625
+    0.82     0.08229     0.00225
+    0.85     0.1         0.0
+
+*slt   **  Liquid-gas relative permeabilities
+
+**   Sl        Krg         Krog
+**  ----     -------     -------
+    0.45     0.2         0.0
+    0.55     0.14202     0.0
+    0.57     0.13123     0.00079
+    0.60     0.11560     0.00494
+    0.62     0.10555     0.00968
+    0.65     0.09106     0.01975
+    0.67     0.08181     0.02844
+    0.70     0.06856     0.04444
+    0.72     0.06017     0.05709
+    0.75     0.04829     0.07901
+    0.77     0.04087     0.09560
+    0.80     0.03054     0.12346
+    0.83     0.02127     0.15486
+    0.85     0.01574     0.17778
+    0.87     0.01080     0.20227
+    0.90     0.00467     0.24198
+    0.92     0.00165     0.27042
+    0.94     0.0         0.30044
+    1.       0.0         0.4
+
+
+
+**  ==============  INITIAL CONDITIONS  ======================
+
+
+*initial
+
+** Automatic static vertical equilibrium
+*vertical *off
+*pres *con 4000
+*temp *con 125
+*sw *con 0.45
+*so *con 0.55
+*mfrac_oil 'OIL'   CON 0.6
+*mfrac_oil 'LIGHT' CON 0.4
+
+**  ==============  NUMERICAL CONTROL  ======================
+
+
+*numerical
+
+
+*norm press 200 satur 0.1  temp 5
+*dtmax 10
+*converge *totres *tighter
+*upwind *3d
+*upstream *klevel
+*matbaltol 1e-6
+*itermax 100
+
+
+*run
+
+
+
+**  ==============  RECURRENT DATA  ======================
+
+
+** Project starts on December 18, 1978
+*date 1978 12 18.5
+
+*dtwell 1e-3
+**wellinit *timestep
+
+*well 1 'INJECTOR' 
+   *injector *mobweight *implicit 1
+   *incomp water 1.0  0.0 0.0
+   *tinjw 450
+   *qual 0.3
+   *operate stw 100 
+   *perf 1
+   ** if     jf     kf     ff
+    5 5 1:4 1.e4
+
+*well 2 'P1' 
+   *producer 2
+
+   *operate  bhp    17 
+
+   *perf 2
+   ** if     jf     kf     ff
+    1 1 1:4 2.e4
+
+*well 3 'P2' 
+   *producer 3
+
+   *operate     bhp    17 
+
+   *perf 3
+   ** if     jf     kf     ff
+    1 9 1:4 3.e4
+
+*well 4 'P3' 
+   *producer 4
+
+   *operate  bhp    17 
+
+   *perf 4
+   ** if     jf     kf     ff
+    9 1 1:4 4.e4
+
+*well 5 'P4' 
+   *producer 5
+
+   *operate     bhp    17 
+
+   *perf 5
+   ** if     jf     kf     ff
+    9 9 1:4 5.e4
+
+
+time 730
+stop

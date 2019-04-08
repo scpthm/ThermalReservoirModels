@@ -1,0 +1,78 @@
+prsi: partitioner: hsfc
+prsi: part_1d_v1, iterations: 3
+prsi: HSFC: load balancing factor: 1.001071
+prsi: grid partition time: 14.650983 s
+prsi: grid generating time: 100.361902 s
+prsi: grid generating, peak mem: 5788.34 MB
+prsi: partition, lif: 1.001071
+prsi: number of processes: 16384
+prsi: partition, cut edges: 3312577983
+prsi: partition, maximum local surface index: 0.0119446
+prsi: partition, average surface index:       0.0101702
+prsi: partition, global surface index:        0.00511115
+prsi: partition, max interprocess connectivity: 17
+prsi: grid size: 6000 x 6000 x 6000
+prsi: nprocs: 16384, grid avg: 13183594
+prsi: matrix size: 216000000000, mat size: 1512000000000
+prsi: mem usage: 5788.34MB
+prsi: grid time: 101.120582 s
+prsi: build linear system time: 16.204681 s
+prsi: matrix dimension: 216000000000
+prsi: matrix assemble time: 8.814612 s
+prsi: mat assemble, mem: 10868.7 MB, peak mem: 10868.7 MB
+prsi: solver assemble time: 9.886855 s
+prsi: preconditioner ras.
+prsi: ras, overlap: 0
+prsi: ras, sort csr: 0.496222 s
+prsi: ras, assemble local domain, total time: 2.071996 s
+prsi: iluk, level: 0
+prsi: iluk, L and U filled: 104208476, ratio: 1.144947
+prsi: iluk, assemble time: 5.943116
+prsi: ras, factorization local domain: 5.943291 s
+prsi: ras, assemble, overall time: 8.015354 s
+prsi: preconditioner assemble time: 8.015444 s
+prsi: solver + pc, overall assemble time: 17.902330 s
+prsi: peak mem usage: 15946.87 MB
+prsi: solver, peak mem: 15946.9 MB
+prsi: solver absolute tol: 0
+prsi: solver relative tol: 1e-06
+prsi: solver b relative tol: 1e-07
+prsi: bicgstab initial residual: 7.346019e+03
+prsi: bicgstab:     1, abs res: 1.414406e+03, rel res: 1.925405e-01, rbn: 1.925405e-01
+prsi: bicgstab:     2, abs res: 6.836017e+02, rel res: 9.305744e-02, rbn: 9.305744e-02
+prsi: bicgstab:     3, abs res: 6.624409e+02, rel res: 9.017686e-02, rbn: 9.017686e-02
+prsi: bicgstab:     4, abs res: 5.817657e+02, rel res: 7.919469e-02, rbn: 7.919469e-02
+prsi: bicgstab:     5, abs res: 6.653459e+02, rel res: 9.057231e-02, rbn: 9.057231e-02
+prsi: bicgstab:     6, abs res: 3.158725e+02, rel res: 4.299914e-02, rbn: 4.299914e-02
+prsi: bicgstab:     7, abs res: 2.806937e+02, rel res: 3.821031e-02, rbn: 3.821031e-02
+prsi: bicgstab:     8, abs res: 2.583016e+02, rel res: 3.516212e-02, rbn: 3.516212e-02
+prsi: bicgstab:     9, abs res: 2.422166e+02, rel res: 3.297249e-02, rbn: 3.297249e-02
+prsi: bicgstab:    10, abs res: 2.304274e+02, rel res: 3.136766e-02, rbn: 3.136766e-02
+prsi: bicgstab:    11, abs res: 2.125025e+02, rel res: 2.892757e-02, rbn: 2.892757e-02
+prsi: bicgstab:    12, abs res: 1.961311e+02, rel res: 2.669896e-02, rbn: 2.669896e-02
+prsi: bicgstab:    13, abs res: 1.877693e+02, rel res: 2.556069e-02, rbn: 2.556069e-02
+prsi: bicgstab:    14, abs res: 1.806401e+02, rel res: 2.459020e-02, rbn: 2.459020e-02
+prsi: bicgstab:    15, abs res: 1.508468e+02, rel res: 2.053450e-02, rbn: 2.053450e-02
+prsi: bicgstab:    16, abs res: 1.453553e+02, rel res: 1.978694e-02, rbn: 1.978694e-02
+prsi: bicgstab:    17, abs res: 8.542663e+01, rel res: 1.162897e-02, rbn: 1.162897e-02
+prsi: bicgstab:    18, abs res: 7.877526e+01, rel res: 1.072353e-02, rbn: 1.072353e-02
+prsi: bicgstab:    19, abs res: 7.265014e+01, rel res: 9.889729e-03, rbn: 9.889729e-03
+prsi: bicgstab:    20, abs res: 7.009644e+01, rel res: 9.542099e-03, rbn: 9.542099e-03
+prsi: bicgstab:    21, abs res: 6.968561e+01, rel res: 9.486173e-03, rbn: 9.486173e-03
+prsi: bicgstab:    22, abs res: 6.766950e+01, rel res: 9.211724e-03, rbn: 9.211724e-03
+prsi: bicgstab:    23, abs res: 7.012019e+01, rel res: 9.545332e-03, rbn: 9.545332e-03
+prsi: bicgstab:    24, abs res: 6.206914e+01, rel res: 8.449357e-03, rbn: 8.449357e-03
+prsi: bicgstab:    25, abs res: 5.982685e+01, rel res: 8.144118e-03, rbn: 8.144118e-03
+prsi: bicgstab:    26, abs res: 5.854633e+01, rel res: 7.969804e-03, rbn: 7.969804e-03
+prsi: bicgstab:    27, abs res: 5.792405e+01, rel res: 7.885094e-03, rbn: 7.885094e-03
+prsi: bicgstab:    28, abs res: 5.761769e+01, rel res: 7.843390e-03, rbn: 7.843390e-03
+prsi: bicgstab:    29, abs res: 5.724727e+01, rel res: 7.792965e-03, rbn: 7.792965e-03
+prsi: bicgstab:    30, abs res: 5.634913e+01, rel res: 7.670703e-03, rbn: 7.670703e-03
+prsi: linear solver iterations: 30
+prsi: solver solving time: 112.341231 s
+prsi: solve linear system time: 130.518574 s
+prsi: nits = 30 resdual: 5.634913e+01
+prsi: global error (infty norm): 1.005810e+00
+prsi: solver absolute residual: 5.634913e+01
+prsi: overall time: 249.684526 s
+prsi: peak mem usage: 15947.14MB

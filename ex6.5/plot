@@ -1,0 +1,36 @@
+set style data lp
+set term postscript enhanced color lw 3
+set key top center
+set logscale x
+set logscale y
+set xrange [7000:110000]
+
+set xtics (8192,16384,24576,49152,98304)
+
+set xlabel "MPIs"
+set ylabel "time (s)"
+
+# load balance
+set output "ex-65-lb.eps"
+plot "grid-lb" t "load balance"
+
+# grid-gen
+set output "ex-65-grid-gen.eps"
+plot "grid-gen" t "grid generation"
+
+# solver setup
+set output "ex-65-mat-ass.eps"
+plot "mat-ass" t "solver setup"
+
+# solver sol
+set output "ex-65-solver-sol.eps"
+plot "solver-sol" t "solver solution: one iteration"
+
+# overall
+set output "ex-65-overall.eps"
+plot "overall" t "overall time"
+
+set yrange [:10000]
+set output "ex-65-all.eps"
+plot "grid-lb" t "grid partition", "grid-gen" t "grid generation", "mat-ass" t "matrix assemble", "ras-ass" t "RAS setup", "solver-sol" t "linear solver: one iteration", "overall" t "overall time"
+

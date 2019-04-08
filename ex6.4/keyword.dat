@@ -1,0 +1,221 @@
+# model
+title: 20b
+unit: field
+
+origin: 0 0 1000
+extents: 2880 2000 3500
+dx: 2880*29.17
+dy: 2000*29.17
+dz: 3500*10
+
+por_format: const
+por: 0.3
+prpor: 75
+cpor: 5e-4
+porform: linear
+volconst: rock
+
+rockcp: 35 
+
+perm_format: const
+kx: 313
+ky: 424
+kz: 535
+#kx: 1000
+#ky: 1000
+#kz: 1000
+
+thconr: 24
+thconw: 24
+thcono: 24
+thcong: 24
+
+#dnurol_o: 35
+#hconl_o: 24
+hlossprop_ob: 35 24
+
+#dnurol_u: 35
+#hconl_u: 24
+hlossprop_ub: 35 24
+
+# cmg uses default value
+hlosst: 125
+
+temr: 60
+prsr: 14.7
+
+tsurf: 60
+psurf: 14.7
+
+# components
+wmolden: 3.464
+wcp: 3.999e-6
+wct1: 4e-4
+wcmm: 18.02
+wpcrit: 3206.2
+wtcrit: 705.4
+
+wcpg1: 7.613
+wcpg2: 8.616e-4
+whvr: 1657.0
+wev: 0.38
+
+wvis_format: analytic
+wavg: 1.13e-5
+wbvg: 1.075
+wavisc: 0.0047352
+wbvisc: 2728.2
+
+wkv_format: user
+wkv1: 1.7202e6
+wkv2: 0
+wkv3: 0
+wkv4: -6869.59
+wkv5: -376.64
+
+num_comp_oil: 1
+oname: heavy
+omolden: 0.10113
+ocp: 5.e-6
+oct1:3.8e-4
+oct2: 0
+ocpt: 0
+ocmm: 600
+opcrit: 0
+otcrit: 0
+
+ocpg1: 300
+ohvr: 0
+oev: 0
+
+ovis_format: analytic
+oavg: 0
+obvg: 0
+oavisc: 2
+obvisc: 5728.2
+
+okv1: 0
+okv2: 0
+okv3: 0
+okv4: 0
+okv5: 0
+
+gvis_format: analytic
+
+sgtable: linear
+
+#   Sl        Krg         Krog
+slt:
+    0.45     0.2         0.0
+    0.55     0.14202     0.0
+    0.57     0.13123     0.00079
+    0.60     0.11560     0.00494
+    0.62     0.10555     0.00968
+    0.65     0.09106     0.01975
+    0.67     0.08181     0.02844
+    0.70     0.06856     0.04444
+    0.72     0.06017     0.05709
+    0.75     0.04829     0.07901
+    0.77     0.04087     0.09560
+    0.80     0.03054     0.12346
+    0.83     0.02127     0.15486
+    0.85     0.01574     0.17778
+    0.87     0.01080     0.20227
+    0.90     0.00467     0.24198
+    0.92     0.00165     0.27042
+    0.94     0.0         0.30044
+    1.       0.0         0.4 /
+
+#   Sw        Krw        Krow
+swtable: linear
+swt: 
+    0.45     0.0         0.4
+    0.47     0.000056    0.361
+    0.50     0.000552    0.30625
+    0.55     0.00312     0.225
+    0.60     0.00861     0.15625
+    0.65     0.01768     0.1
+    0.70     0.03088     0.05625
+    0.75     0.04871     0.025
+    0.77     0.05724     0.016
+    0.80     0.07162     0.00625
+    0.82     0.08229     0.00225
+    0.85     0.1         0.0 /
+
+
+# initial conditions
+vertical: off
+sw: 0.45
+so: 0.55
+
+temp: 125
+pres: 75
+mfrac_oil: 1.
+
+tend: 3
+dtmax: 1
+maxsteps: 3
+
+tistep: 1e-5
+
+newton: standard
+solver: bicgstab
+pc: cpr-fpf
+itsmax: 100
+itnmax: 10
+tolsol: 1e-3
+tolnew: 1e-4
+mat_decouple: gje
+
+dpmax: 300
+dswmax: 0.2
+dsgmax: 0.2
+dtempmax: 5
+dmolmax: 0.2
+appleyard: on
+ncuts: 7
+wus: off
+itnl_dumpls: off
+
+output_vis: off
+output_vis_freq: 1
+
+well_size: 3
+
+well: inj
+well_type: injector
+incomp: water
+direction: vertical
+tinjw: 450
+qual: 0.0
+weight: mobweight implicit
+
+operate: fixed bhp 1500  
+
+perf:
+    1 1 1:4 1e4
+/
+
+well: p2 
+well_type: producer
+direction: vertical
+weight: implicit
+
+operate: fixed bhp 17 
+
+perf:
+    9 1 1:4 1e4
+/
+
+well: p3
+well_type: producer
+direction: vertical
+weight: implicit
+
+operate: fixed bhp 17
+
+perf:
+    5 5 1:4 1e4 /
+
+run
+time: 20

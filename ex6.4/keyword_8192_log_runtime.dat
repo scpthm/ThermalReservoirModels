@@ -1,0 +1,299 @@
+prsi: partitioner: hsfc
+prsi: part_1d_v1, iterations: 3
+prsi: HSFC: load balancing factor: 1.003849
+prsi: grid partition time: 2.695875 s
+prsi: grid generating time: 17.072877 s
+prsi: grid generating, peak mem: 1103.62 MB
+prsi: partition, lif: 1.003849
+prsi: number of processes: 8192
+prsi: partition, cut edges: 604898180
+prsi: partition, maximum local surface index: 0.0262894
+prsi: partition, average surface index:       0.0197965
+prsi: partition, global surface index:        0.00999785
+prsi: partition, max interprocess connectivity: 19
+
+prsi: Netwon: 1 / 20
+Material balance error: water: 1.53568e-18 oil: 1.03094e-19 energy: 1.15551e-18
+prsi: Newton rhs: 1.298559e+03
+prsi: Newton relative residual: 1.00000000e+00, tol: 1.000000e-04
+prsi: matrix decoupling time: 13.577089 s
+prsi: matrix dimension: 100800000003
+prsi: matrix assemble time: 14.932693 s
+prsi: mat assemble, mem: 15619.3 MB, peak mem: 15619.3 MB
+prsi: solver assemble time: 16.997543 s
+prsi: preconditioner cpr-fpf.
+prsi: ras, overlap: 1
+prsi: ras, assemble, round: 0, total send: 3542460, 81.080475 Mb
+prsi: ras, assemble, round: 0, total recv: 3537826, 80.974411 Mb
+prsi: ras, get overlapped domain: 0.519515 s
+prsi: ras, assemble remote matrix: 0.908904 s
+prsi: ras, assemble local matrix: 2.960321 s
+prsi: ras, coo to csr: 1.238090 s
+prsi: ras, setup cinfo: 1.947100 s
+prsi: ras, assemble matrix, total: 9.308477 s
+prsi: ras, sort csr: 0.735560 s
+prsi: ras, assemble local domain, total time: 10.044185 s
+prsi: ilut, p: 10, tol: 0.001
+prsi: ilut, L and U filled (before filter): 131188306, ratio: 1.107203
+prsi: ilut, L and U filled: 25404676, ratio: 0.214410
+prsi: ilut, assemble time: 13.667612
+prsi: ras, factorization local domain: 13.667755 s
+prsi: ras, assemble, overall time: 23.712003 s
+prsi: amg, assemble time: 2.480126
+prsi: preconditioner f-pre-itr:  1.
+prsi: preconditioner f-post-itr: 1.
+prsi: preconditioner assemble time: 31.028579 s
+prsi: solver + pc, overall assemble time: 48.026148 s
+prsi: peak mem usage: 18829.99 MB
+prsi: solver, peak mem: 18830 MB
+prsi: solver absolute tol: 0
+prsi: solver relative tol: 0.001
+prsi: solver b relative tol: 0.001
+prsi: bicgstab initial residual: 2.368564e-05
+prsi: bicgstab:     1, abs res: 3.413108e-35, rel res: 1.441003e-30, rbn: 1.441003e-30
+prsi: linear solver iterations: 1
+prsi: solver solving time: 10.561237 s
+prsi: solver, iteration: 1, residual: 1.871227e-27, total linear solver time: 217.734306 s
+
+prsi: Netwon: 2 / 20
+Material balance error: water: 6.78933e-20 oil: 3.54854e-27 energy: 7.52958e-20
+prsi: Newton rhs: 3.825795e-02
+prsi: Newton relative residual: 2.94618570e-05, tol: 1.000000e-04
+prsi: Netwon susseeded, skip: 2 / 20.
+prsi: Newton: number of iteration: 1
+
+
+
+****** time step: 1
+time: 1e-05 days, step: 1e-05 days, Newton: 1, linear: 1
+
+------ water component info:
+well: inj, 1, water injection rate: 0.0630289 mol/s, accumulation injection: 0.054457 mol, bhp: 102.069 atm
+well: inj, 1, injection rate: 0.617295 bbl/day, accumulation injection: 6.17295e-06 bbl, bhp: 1500 psi
+well: p2, 2, production rate: 9.21305e-11 mol/s, accumulation production: 7.96008e-11 mol, bhp: 1.15678 atm
+well: p2, 2, production rate: 9.02312e-10 bbl/day, accumulation production: 9.02312e-15 bbl, bhp: 17 psi
+well: p3, 3, production rate: 9.21305e-11 mol/s, accumulation production: 7.96008e-11 mol, bhp: 1.15678 atm
+well: p3, 3, production rate: 9.02312e-10 bbl/day, accumulation production: 9.02312e-15 bbl, bhp: 17 psi
+
+------ oil component info:
+well: p2, 2, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 6.5313e-05 mol
+well: p2, 2, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 2.53593e-07 bbl
+well: p3, 3, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 6.5313e-05 mol
+well: p3, 3, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 2.53593e-07 bbl
+
+------ surface flash:
+well: inj, 1, water injection rate: 0.617295 bbl/day, accumulation injection: 6.17295e-06 bbl, bhp: 102.069 atm, 1500 psi
+
+well: p2, 2, water production rate: 9.02312e-10 bbl/day, accumulation production: 9.02312e-15 bbl, bhp: 1.15678 atm, 17 psi
+well: p2, 2, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: p3, 3, water production rate: 9.02312e-10 bbl/day, accumulation production: 9.02312e-15 bbl, bhp: 1.15678 atm, 17 psi
+well: p3, 3, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: total water injection rate: 0.617295 bbl/day
+well: total water production rate: 1.80462e-09 bbl/day
+well: total oil production rate: 0.0507185 bbl/day
+
+Material balance error: water: 6.78933e-20 oil: 3.54854e-27 energy: 7.52958e-20
+CPU time: 304.100 s, mem: 1.912068e+04 Mb, total Newtons: 1, linear: 1, total time: 304.101315 s
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step: 1.667000e-05
+prsi: time step inc factor: 1.667000e+00
+
+prsi: Netwon: 1 / 10
+Material balance error: water: 2.55997e-18 oil: 1.71858e-19 energy: 1.92624e-18
+prsi: Newton rhs: 1.298559e+03
+prsi: Newton relative residual: 1.00000000e+00, tol: 1.000000e-04
+prsi: matrix decoupling time: 13.640914 s
+prsi: matrix dimension: 100800000003
+prsi: matrix assemble time: 14.996204 s
+prsi: mat assemble, mem: 19160.4 MB, peak mem: 19160.4 MB
+prsi: solver assemble time: 16.930061 s
+prsi: preconditioner cpr-fpf.
+prsi: ras, overlap: 1
+prsi: ras, assemble, round: 0, total send: 3604950, 82.510757 Mb
+prsi: ras, assemble, round: 0, total recv: 3623327, 82.931374 Mb
+prsi: ras, get overlapped domain: 0.503560 s
+prsi: ras, assemble remote matrix: 0.931992 s
+prsi: ras, assemble local matrix: 3.026886 s
+prsi: ras, coo to csr: 1.513130 s
+prsi: ras, setup cinfo: 2.554785 s
+prsi: ras, assemble matrix, total: 10.269752 s
+prsi: ras, sort csr: 0.772446 s
+prsi: ras, assemble local domain, total time: 11.042346 s
+prsi: ilut, p: 10, tol: 0.001
+prsi: ilut, L and U filled (before filter): 133834408, ratio: 1.104861
+prsi: ilut, L and U filled: 25404676, ratio: 0.209727
+prsi: ilut, assemble time: 14.127304
+prsi: ras, factorization local domain: 14.127442 s
+prsi: ras, assemble, overall time: 25.169832 s
+prsi: amg, assemble time: 3.066071
+prsi: preconditioner f-pre-itr:  1.
+prsi: preconditioner f-post-itr: 1.
+prsi: preconditioner assemble time: 33.518915 s
+prsi: solver + pc, overall assemble time: 50.448994 s
+prsi: peak mem usage: 21444.18 MB
+prsi: solver, peak mem: 21444.2 MB
+prsi: solver absolute tol: 0
+prsi: solver relative tol: 0.001
+prsi: solver b relative tol: 0.001
+prsi: bicgstab initial residual: 3.948397e-05
+prsi: bicgstab:     1, abs res: 6.609706e-34, rel res: 1.674023e-29, rbn: 1.674023e-29
+prsi: linear solver iterations: 1
+prsi: solver solving time: 12.012702 s
+prsi: solver, iteration: 1, residual: 2.173817e-26, total linear solver time: 218.486044 s
+
+prsi: Netwon: 2 / 10
+Material balance error: water: 4.61664e-26 oil: 4.42045e-26 energy: 8.60525e-21
+prsi: Newton rhs: 1.300814e-02
+prsi: Newton relative residual: 1.00173651e-05, tol: 1.000000e-04
+prsi: Netwon susseeded, skip: 2 / 10.
+prsi: Newton: number of iteration: 1
+
+
+
+****** time step: 2
+time: 2.667e-05 days, step: 1.67e-05 days, Newton: 1, linear: 1
+
+------ water component info:
+well: inj, 1, water injection rate: 0.063029 mol/s, accumulation injection: 0.145237 mol, bhp: 102.069 atm
+well: inj, 1, injection rate: 0.617296 bbl/day, accumulation injection: 1.64633e-05 bbl, bhp: 1500 psi
+well: p2, 2, production rate: 2.45712e-10 mol/s, accumulation production: 4.33497e-10 mol, bhp: 1.15678 atm
+well: p2, 2, production rate: 2.40646e-09 bbl/day, accumulation production: 4.91389e-14 bbl, bhp: 17 psi
+well: p3, 3, production rate: 2.45712e-10 mol/s, accumulation production: 4.33497e-10 mol, bhp: 1.15678 atm
+well: p3, 3, production rate: 2.40646e-09 bbl/day, accumulation production: 4.91389e-14 bbl, bhp: 17 psi
+
+------ oil component info:
+well: p2, 2, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 0.00017419 mol
+well: p2, 2, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 6.76332e-07 bbl
+well: p3, 3, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 0.00017419 mol
+well: p3, 3, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 6.76332e-07 bbl
+
+------ surface flash:
+well: inj, 1, water injection rate: 0.617296 bbl/day, accumulation injection: 1.64633e-05 bbl, bhp: 102.069 atm, 1500 psi
+
+well: p2, 2, water production rate: 2.40646e-09 bbl/day, accumulation production: 4.91389e-14 bbl, bhp: 1.15678 atm, 17 psi
+well: p2, 2, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: p3, 3, water production rate: 2.40646e-09 bbl/day, accumulation production: 4.91389e-14 bbl, bhp: 1.15678 atm, 17 psi
+well: p3, 3, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: total water injection rate: 0.617296 bbl/day
+well: total water production rate: 4.81293e-09 bbl/day
+well: total oil production rate: 0.0507185 bbl/day
+
+Material balance error: water: 4.61664e-26 oil: 4.42045e-26 energy: 8.60525e-21
+CPU time: 288.717 s, mem: 2.144866e+04 Mb, total Newtons: 2, linear: 2, total time: 592.873428 s
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step: 2.778889e-05
+prsi: time step inc factor: 1.667000e+00
+
+prsi: Netwon: 1 / 10
+Material balance error: water: 4.26748e-18 oil: 3.45864e-19 energy: 3.21535e-18
+prsi: Newton rhs: 1.298559e+03
+prsi: Newton relative residual: 1.00000000e+00, tol: 1.000000e-04
+prsi: matrix decoupling time: 13.510012 s
+prsi: matrix dimension: 100800000003
+prsi: matrix assemble time: 15.325517 s
+prsi: mat assemble, mem: 22511.7 MB, peak mem: 22511.7 MB
+prsi: solver assemble time: 17.970661 s
+prsi: preconditioner cpr-fpf.
+prsi: ras, overlap: 1
+prsi: ras, assemble, round: 0, total send: 3753470, 85.910110 Mb
+prsi: ras, assemble, round: 0, total recv: 3748535, 85.797157 Mb
+prsi: ras, get overlapped domain: 0.684946 s
+prsi: ras, assemble remote matrix: 0.959222 s
+prsi: ras, assemble local matrix: 3.090572 s
+prsi: ras, coo to csr: 1.443433 s
+prsi: ras, setup cinfo: 2.552452 s
+prsi: ras, assemble matrix, total: 10.465353 s
+prsi: ras, sort csr: 0.792472 s
+prsi: ras, assemble local domain, total time: 11.257985 s
+prsi: ilut, p: 10, tol: 0.001
+prsi: ilut, L and U filled (before filter): 137928710, ratio: 1.101432
+prsi: ilut, L and U filled: 25404676, ratio: 0.202870
+prsi: ilut, assemble time: 14.014211
+prsi: ras, factorization local domain: 14.014349 s
+prsi: ras, assemble, overall time: 25.272378 s
+prsi: amg, assemble time: 3.206006
+prsi: preconditioner f-pre-itr:  1.
+prsi: preconditioner f-post-itr: 1.
+prsi: preconditioner assemble time: 34.517648 s
+prsi: solver + pc, overall assemble time: 52.488329 s
+prsi: peak mem usage: 22816.24 MB
+prsi: solver, peak mem: 22816.2 MB
+prsi: solver absolute tol: 0
+prsi: solver relative tol: 0.001
+prsi: solver b relative tol: 0.001
+prsi: bicgstab initial residual: 6.581974e-05
+prsi: bicgstab:     1, abs res: 6.808972e-33, rel res: 1.034488e-28, rbn: 1.034488e-28
+prsi: linear solver iterations: 1
+prsi: solver solving time: 11.749004 s
+prsi: solver, iteration: 1, residual: 1.343343e-25, total linear solver time: 220.418444 s
+
+prsi: Netwon: 2 / 10
+Material balance error: water: 6.78918e-20 oil: 1.31833e-25 energy: 2.00069e-19
+prsi: Newton rhs: 2.732339e-02
+prsi: Newton relative residual: 2.10413215e-05, tol: 1.000000e-04
+prsi: Netwon susseeded, skip: 2 / 10.
+prsi: Newton: number of iteration: 1
+
+
+
+****** time step: 3
+time: 5.44589e-05 days, step: 2.78e-05 days, Newton: 1, linear: 1
+
+------ water component info:
+well: inj, 1, water injection rate: 0.0630292 mol/s, accumulation injection: 0.296567 mol, bhp: 102.069 atm
+well: inj, 1, injection rate: 0.617298 bbl/day, accumulation injection: 3.36173e-05 bbl, bhp: 1500 psi
+well: p2, 2, production rate: 5.01733e-10 mol/s, accumulation production: 1.63814e-09 mol, bhp: 1.15678 atm
+well: p2, 2, production rate: 4.91389e-09 bbl/day, accumulation production: 1.8569e-13 bbl, bhp: 17 psi
+well: p3, 3, production rate: 5.01732e-10 mol/s, accumulation production: 1.63814e-09 mol, bhp: 1.15678 atm
+well: p3, 3, production rate: 4.91389e-09 bbl/day, accumulation production: 1.8569e-13 bbl, bhp: 17 psi
+
+------ oil component info:
+well: p2, 2, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 0.000355687 mol
+well: p2, 2, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 1.38104e-06 bbl
+well: p3, 3, oil component 1, production rate: 7.55938e-05 mol/s, accumulation: 0.000355687 mol
+well: p3, 3, oil component 1, production rate: 0.0253593 bbl/day, accumulation production: 1.38104e-06 bbl
+
+------ surface flash:
+well: inj, 1, water injection rate: 0.617298 bbl/day, accumulation injection: 3.36173e-05 bbl, bhp: 102.069 atm, 1500 psi
+
+well: p2, 2, water production rate: 4.91389e-09 bbl/day, accumulation production: 1.8569e-13 bbl, bhp: 1.15678 atm, 17 psi
+well: p2, 2, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: p3, 3, water production rate: 4.91389e-09 bbl/day, accumulation production: 1.8569e-13 bbl, bhp: 1.15678 atm, 17 psi
+well: p3, 3, oil production rate: 0.0253593 bbl/day, bhp: 1.15678 atm, 17 psi
+
+well: total water injection rate: 0.617298 bbl/day
+well: total water production rate: 9.82777e-09 bbl/day
+well: total oil production rate: 0.0507185 bbl/day
+
+Material balance error: water: 6.78918e-20 oil: 1.31833e-25 energy: 2.00069e-19
+CPU time: 293.244 s, mem: 2.281627e+04 Mb, total Newtons: 3, linear: 3, total time: 886.176076 s
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333332e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step, desired change: 2.333333e+00
+prsi: time step: 4.632408e-05
+prsi: time step inc factor: 1.667000e+00
+
+------------------------ SUMMARY ------------------------
+  total time step:          3
+  time step cuts:           0
+  Newton iterations:        3, avg.: 1.000000
+  linear solver iterations: 3, avg.: 1
+  update fluid props time:  78.010598 s
+  total linear solver time: 656.638794 s, solution time: 226.442337 s
+  peak memory usage:        22816.265625 Mb
+  total running time:       886.178157 s

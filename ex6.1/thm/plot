@@ -1,0 +1,80 @@
+set style data l
+set term postscript enhanced color
+set key top center
+
+set xlabel "Time (day)"
+
+set xrange [-20:]
+set ylabel "pressure (psi)"
+
+set output "val-light-inj-bhp.eps"
+plot "thm-bhp" t "THM", "cmg-bhp" using 1:3 t "CMG STARS"
+
+#set output "val-light-p1-bhp.eps"
+#plot "thm-bhp-p1" t "THM", "cmg-p1-bhp" using 1:3 t "CMG STARS"
+#
+#set output "val-light-p2-bhp.eps"
+#plot "thm-bhp-p2" t "THM", "cmg-p2-bhp" using 1:3 t "CMG STARS"
+#
+#set output "val-light-p3-bhp.eps"
+#plot "thm-bhp-p3" t "THM", "cmg-p3-bhp" using 1:3 t "CMG STARS"
+#
+#set output "val-light-p4-bhp.eps"
+#plot "thm-bhp-p4" t "THM", "cmg-p4-bhp" using 1:3 t "CMG STARS"
+
+set ylabel "rate (bbl/day)"
+set output "val-light-ir.eps"
+plot "thm-ir" t "THM", "cmg-ir" using 1:3 t "CMG STARS"
+
+set yrange [-10:]
+set output "val-light-p1-pwr.eps"
+plot "thm-p1-wat" t "THM", "cmg-p1-wat" using 1:3 t "CMG STARS"
+
+set output "val-light-p2-pwr.eps"
+plot "thm-p2-wat" t "THM", "cmg-p2-wat" using 1:3 t "CMG STARS"
+
+set output "val-light-p3-pwr.eps"
+plot "thm-p3-wat" t "THM", "cmg-p3-wat" using 1:3 t "CMG STARS"
+
+set output "val-light-p4-pwr.eps"
+plot "thm-p4-wat" t "THM", "cmg-p4-wat" using 1:3 t "CMG STARS"
+
+# together
+#set output "val-light-well-pwr.eps"
+#plot "thm-p1-wat" t "THM, P1", "cmg-p1-wat" using 1:3 t "CMG STARS, P1", \
+#     "thm-p2-wat" t "THM, P2", "cmg-p2-wat" using 1:3 t "CMG STARS, P2", \
+#     "thm-p3-wat" t "THM, P3", "cmg-p3-wat" using 1:3 t "CMG STARS, P3", \
+#     "thm-p4-wat" t "THM, P4", "cmg-p4-wat" using 1:3 t "CMG STARS, P4"
+
+set ylabel "rate (ft^3/day)"
+
+set output "val-light-p2-pgr.eps"
+plot "thm-p2-gas" t "THM", "cmg-p2-gas" using 1:3 t "CMG STARS"
+
+set output "val-light-p3-pgr.eps"
+plot "thm-p3-gas" t "THM", "cmg-p3-gas" using 1:3 t "CMG STARS"
+
+set output "val-light-p4-pgr.eps"
+plot "thm-p4-gas" t "THM", "cmg-p4-gas" using 1:3 t "CMG STARS"
+
+set yrange [-0.2:]
+
+set ylabel "rate (bbl/day)"
+set output "val-light-p1-por.eps"
+plot "thm-p1-oil" t "THM", "cmg-p1-oil" using 1:3 t "CMG STARS"
+
+set output "val-light-p2-por.eps"
+plot "thm-p2-oil" t "THM", "cmg-p2-oil" using 1:3 t "CMG STARS"
+
+set output "val-light-p3-por.eps"
+plot "thm-p3-oil" t "THM", "cmg-p3-oil" using 1:3 t "CMG STARS"
+
+set output "val-light-p4-por.eps"
+plot "thm-p4-oil" t "THM", "cmg-p4-oil" using 1:3 t "CMG STARS"
+
+#set output "val-light-well-por.eps"
+#plot "thm-p1-oil" t "THM, P1", "cmg-p1-oil" using 1:3 t "CMG STARS, P1",  \
+#     "thm-p2-oil" t "THM, P2", "cmg-p2-oil" using 1:3 t "CMG STARS, P2",  \
+#     "thm-p3-oil" t "THM, P3", "cmg-p3-oil" using 1:3 t "CMG STARS, P3",  \
+#     "thm-p4-oil" t "THM, P4", "cmg-p4-oil" using 1:3 t "CMG STARS, P4"
+

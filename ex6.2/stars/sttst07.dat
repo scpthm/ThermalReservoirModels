@@ -1,0 +1,755 @@
+**  ==============  INPUT/OUTPUT CONTROL  ======================
+
+RESULTS SIMULATOR STARS
+
+*interrupt *stop
+
+*title1 'STARS Test Bed No. 7'
+*title2 'Fourth SPE Comparative Solution Project'
+*title3 'Problem 2A:  Steam Flood with Dead Oil'
+
+*inunit *field   ** output same as input
+
+*outprn *grid pres sw so sg temp y x w solconc viso
+*outprn *well *all
+*wrst 300
+*wprn *grid 300
+*wprn *iter 300
+
+outsrf well  layer all
+outsrf grid  pres so sg temp velocsc fluxsc velocrc fluxrc
+outsrf special matbal well 'OIL'    ** Cumulative oil produced
+
+wprn sector 1
+wsrf sector 1
+
+
+
+**  ==============  GRID AND RESERVOIR DEFINITION  =================
+
+
+*grid *cart 100 100 6
+*kdir *down
+
+**  The triangular area of 1/8 of nine-spot pattern is covered with a
+**  9x5 grid with grid lines diagonal to the line linking the injector
+**  with the nearest producer.  These blocks are trimmed using block
+**  modifiers.
+**  In addition, a point-distributed grid is required in order to put
+**  grid nodes on the injector-producer line.  To do this, an oversized
+**  grid is specified, and then trimmed back using block modifiers.
+
+**  The interwell distance is divided into 8 equal segments, requiring
+**  ni = 9.  The third corner is a 1/4 block, and is located at j = 5.
+
+**  The nine-spot pattern is 2.5 acres in area, or 330 ft square.  The
+**  distance between injector and far producer is (330/2)*1.414 =
+**  233.3 ft, giving a block size of 233.3/8 = 29.17 ft.
+
+*di *con 10
+*dj *con 10
+*dk *con 1
+*depth 1 1 1 1005
+
+*por *con 0.3
+*permi *con 313
+*permj *con 424
+*permk *con 535
+
+*end-grid
+
+*cpor 5e-4
+*prpor 75
+
+*rockcp 35
+*thconr 24
+*thconw 24
+*thcono 24
+*thcong 24
+
+*hlossprop  overbur 35 24  underbur 35 24
+
+**  ==============  FLUID DEFINITIONS  ======================
+
+
+*model 5 5 3
+
+*compname   'WATER'    'OIL'    'LIGHT'     'N2'        'ING'
+*cmm        18.02      600     250          28          40.8
+*pcrit      3206.2      0      225          730         500
+*tcrit      705.4       0      800          -181        -232
+*avg        1.13e-5     0      5.e-5        2.1960e-4   2.1267e-4
+*bvg        1.075       0      0.9          0.721       0.702
+*avisc      0.0047352   2      0.287352
+*bvisc      2728.2      5728.2 3728.2
+
+*molden     3.464      0.10113 0.2092
+*cp         3.999e-6   5.e-6   5.e-6
+*ct1        4e-4       3.8e-4  3.8e-4
+
+*cpg1       7.613      300     247.5        6.713       7.44
+*cpg2       8.616e-4   0       0            -4.883e-7   -0.0018
+*cpg3       0          0       0            1.287e-6    1.975e-6
+*cpg4       0          0       0            -4.36e-10   -4.78e-10
+*ev         0.38       0       0.38
+*hvr        1657.0     0       657.0
+
+*kv1        1.7202e6   0       7.9114e4
+*kv2        0          0       0
+*kv3        0          0       0
+*kv4        -6869.59   0       -1583.71
+*kv5        -376.64    0       -446.78
+
+*prsr 14.7
+*temr 60
+*psurf 14.7
+*tsurf 60
+
+
+
+**  ==============  ROCK-FLUID PROPERTIES  ======================
+
+
+*rockfluid
+
+*swt   **  Water-oil relative permeabilities
+
+**   Sw        Krw        Krow
+**  ----     --------    -------
+    0.45     0.0         0.4
+    0.47     0.000056    0.361
+    0.50     0.000552    0.30625
+    0.55     0.00312     0.225
+    0.60     0.00861     0.15625
+    0.65     0.01768     0.1
+    0.70     0.03088     0.05625
+    0.75     0.04871     0.025
+    0.77     0.05724     0.016
+    0.80     0.07162     0.00625
+    0.82     0.08229     0.00225
+    0.85     0.1         0.0
+
+*slt   **  Liquid-gas relative permeabilities
+
+**   Sl        Krg         Krog
+**  ----     -------     -------
+    0.45     0.2         0.0
+    0.55     0.14202     0.0
+    0.57     0.13123     0.00079
+    0.60     0.11560     0.00494
+    0.62     0.10555     0.00968
+    0.65     0.09106     0.01975
+    0.67     0.08181     0.02844
+    0.70     0.06856     0.04444
+    0.72     0.06017     0.05709
+    0.75     0.04829     0.07901
+    0.77     0.04087     0.09560
+    0.80     0.03054     0.12346
+    0.83     0.02127     0.15486
+    0.85     0.01574     0.17778
+    0.87     0.01080     0.20227
+    0.90     0.00467     0.24198
+    0.92     0.00165     0.27042
+    0.94     0.0         0.30044
+    1.       0.0         0.4
+
+
+
+**  ==============  INITIAL CONDITIONS  ======================
+
+
+*initial
+
+** Automatic static vertical equilibrium
+*vertical *off
+*pres *con 4000
+*temp *con 125
+*sw *con 0.4
+*so *con 0.5
+*mfrac_oil 'OIL'   CON 0.6
+*mfrac_oil 'LIGHT' CON 0.4
+
+*mfrac_gas 'N2'    CON  0.2
+*mfrac_gas 'ING'   CON  0.7
+
+**  ==============  NUMERICAL CONTROL  ======================
+
+
+*numerical
+
+
+*norm press 200 satur 0.1  temp 10
+*dtmax 10
+*converge *totres *tighter
+*upwind *3d
+*upstream *klevel
+*matbaltol 1e-6
+*itermax 100
+
+
+*run
+
+
+
+**  ==============  RECURRENT DATA  ======================
+
+
+** Project starts on December 18, 1978
+*date 1978 12 18.5
+
+*dtwell 1e-3
+**wellinit *timestep
+
+
+*well 1 'INJECTOR_1'
+*injector *mobweight *implicit 1
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 1
+    1:100 2 3 1e5
+
+
+
+*well 2 'P_2'
+*producer 2
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 2
+    1:100 2 6 1e5
+
+
+
+*well 3 'INJECTOR_3'
+*injector *mobweight *implicit 3
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 3
+    1:100 6 3 1e5
+
+
+
+*well 4 'P_4'
+*producer 4
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 4
+    1:100 6 6 1e5
+
+
+
+*well 5 'INJECTOR_5'
+*injector *mobweight *implicit 5
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 5
+    1:100 10 3 1e5
+
+
+
+*well 6 'P_6'
+*producer 6
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 6
+    1:100 10 6 1e5
+
+
+
+*well 7 'INJECTOR_7'
+*injector *mobweight *implicit 7
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 7
+    1:100 14 3 1e5
+
+
+
+*well 8 'P_8'
+*producer 8
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 8
+    1:100 14 6 1e5
+
+
+
+*well 9 'INJECTOR_9'
+*injector *mobweight *implicit 9
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 9
+    1:100 18 3 1e5
+
+
+
+*well 10 'P_10'
+*producer 10
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 10
+    1:100 18 6 1e5
+
+
+
+*well 11 'INJECTOR_11'
+*injector *mobweight *implicit 11
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 11
+    1:100 22 3 1e5
+
+
+
+*well 12 'P_12'
+*producer 12
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 12
+    1:100 22 6 1e5
+
+
+
+*well 13 'INJECTOR_13'
+*injector *mobweight *implicit 13
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 13
+    1:100 26 3 1e5
+
+
+
+*well 14 'P_14'
+*producer 14
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 14
+    1:100 26 6 1e5
+
+
+
+*well 15 'INJECTOR_15'
+*injector *mobweight *implicit 15
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 15
+    1:100 30 3 1e5
+
+
+
+*well 16 'P_16'
+*producer 16
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 16
+    1:100 30 6 1e5
+
+
+
+*well 17 'INJECTOR_17'
+*injector *mobweight *implicit 17
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 17
+    1:100 34 3 1e5
+
+
+
+*well 18 'P_18'
+*producer 18
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 18
+    1:100 34 6 1e5
+
+
+
+*well 19 'INJECTOR_19'
+*injector *mobweight *implicit 19
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 19
+    1:100 38 3 1e5
+
+
+
+*well 20 'P_20'
+*producer 20
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 20
+    1:100 38 6 1e5
+
+
+
+*well 21 'INJECTOR_21'
+*injector *mobweight *implicit 21
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 21
+    1:100 42 3 1e5
+
+
+
+*well 22 'P_22'
+*producer 22
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 22
+    1:100 42 6 1e5
+
+
+
+*well 23 'INJECTOR_23'
+*injector *mobweight *implicit 23
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 23
+    1:100 46 3 1e5
+
+
+
+*well 24 'P_24'
+*producer 24
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 24
+    1:100 46 6 1e5
+
+
+
+*well 25 'INJECTOR_25'
+*injector *mobweight *implicit 25
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 25
+    1:100 50 3 1e5
+
+
+
+*well 26 'P_26'
+*producer 26
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 26
+    1:100 50 6 1e5
+
+
+
+*well 27 'INJECTOR_27'
+*injector *mobweight *implicit 27
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 27
+    1:100 54 3 1e5
+
+
+
+*well 28 'P_28'
+*producer 28
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 28
+    1:100 54 6 1e5
+
+
+
+*well 29 'INJECTOR_29'
+*injector *mobweight *implicit 29
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 29
+    1:100 58 3 1e5
+
+
+
+*well 30 'P_30'
+*producer 30
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 30
+    1:100 58 6 1e5
+
+
+
+*well 31 'INJECTOR_31'
+*injector *mobweight *implicit 31
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 31
+    1:100 62 3 1e5
+
+
+
+*well 32 'P_32'
+*producer 32
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 32
+    1:100 62 6 1e5
+
+
+
+*well 33 'INJECTOR_33'
+*injector *mobweight *implicit 33
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 33
+    1:100 66 3 1e5
+
+
+
+*well 34 'P_34'
+*producer 34
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 34
+    1:100 66 6 1e5
+
+
+
+*well 35 'INJECTOR_35'
+*injector *mobweight *implicit 35
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 35
+    1:100 70 3 1e5
+
+
+
+*well 36 'P_36'
+*producer 36
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 36
+    1:100 70 6 1e5
+
+
+
+*well 37 'INJECTOR_37'
+*injector *mobweight *implicit 37
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 37
+    1:100 74 3 1e5
+
+
+
+*well 38 'P_38'
+*producer 38
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 38
+    1:100 74 6 1e5
+
+
+
+*well 39 'INJECTOR_39'
+*injector *mobweight *implicit 39
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 39
+    1:100 78 3 1e5
+
+
+
+*well 40 'P_40'
+*producer 40
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 40
+    1:100 78 6 1e5
+
+
+
+*well 41 'INJECTOR_41'
+*injector *mobweight *implicit 41
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 41
+    1:100 82 3 1e5
+
+
+
+*well 42 'P_42'
+*producer 42
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 42
+    1:100 82 6 1e5
+
+
+
+*well 43 'INJECTOR_43'
+*injector *mobweight *implicit 43
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 43
+    1:100 86 3 1e5
+
+
+
+*well 44 'P_44'
+*producer 44
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 44
+    1:100 86 6 1e5
+
+
+
+*well 45 'INJECTOR_45'
+*injector *mobweight *implicit 45
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 45
+    1:100 90 3 1e5
+
+
+
+*well 46 'P_46'
+*producer 46
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 46
+    1:100 90 6 1e5
+
+
+
+*well 47 'INJECTOR_47'
+*injector *mobweight *implicit 47
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 47
+    1:100 94 3 1e5
+
+
+
+*well 48 'P_48'
+*producer 48
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 48
+    1:100 94 6 1e5
+
+
+
+*well 49 'INJECTOR_49'
+*injector *mobweight *implicit 49
+*incomp water 1 0 0
+*tinjw 450
+*qual 0.2
+
+operate stw 3
+perf 49
+    1:100 98 3 1e5
+
+
+
+*well 50 'P_50'
+*producer 50
+
+*operate bhp 2000
+*operate steamtrap 20
+perf 50
+    1:100 98 6 1e5
+
+
+
+time 200
+stop
